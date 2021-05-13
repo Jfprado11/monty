@@ -122,6 +122,11 @@ void func_pint(stack_t **head, unsigned int line)
 	}
 	printf("%d\n", (*head)->n);
 }
+/**
+ *func_pop - Function to renove the top of the element.
+ *@head: Pointer head of duobly linked list.
+ *@line: Lines of readed file.
+ */
 
 void func_pop(stack_t **head, unsigned int line)
 {
