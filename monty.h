@@ -39,15 +39,26 @@ char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char *global_data;
+/**
+ * struct global_structure - extern global variable.
+ * @data: Data readed from the file.
+ * @array_st: Array.
+ * @fd_st: file readed.
+ */
+typedef struct global_structure
+{
+char *data;
+char **array_st;
+FILE *fd_st;
+} global_struct;
 
-void string_cmp(char **array, unsigned int line, stack_t **head, FILE*fd);
+extern global_struct global;
+void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd);
 char **tokenizer(char **array, char *buf, char *delimit);
 void func_push(stack_t **head, unsigned int line);
 void func_pall(stack_t **head, unsigned int line);
 void free_stack(stack_t *head);
 void free_tokenizer(char **free_token);
-
-char *global_data;
+global_struct global;
 
 #endif /*_HEADER_H_*/

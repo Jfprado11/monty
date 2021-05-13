@@ -25,6 +25,7 @@ int main(int ac, char *av[])
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
+	global.fd_st = fd;
 	while (fgets(buf, 1024, fd) != NULL)
 	{
 		tokens = malloc(sizeof(char *) * strlen(buf));
@@ -35,9 +36,11 @@ int main(int ac, char *av[])
 		}
 		tokens = tokenizer(tokens, buf, delimit);
 		if (tokens[0] != NULL)
-			global_data = tokens[1];
-		if (tokens[0] != NULL)
+		{
+			global.data = tokens[1];
+			global.array_st = tokens;
 			string_cmp(tokens, lines, &head, fd);
+		}
 		lines++;
 		free_tokenizer(tokens);
 	}

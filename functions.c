@@ -42,12 +42,15 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 void func_push(stack_t **head, unsigned int line)
 {
 	stack_t *new_node = NULL;
-	char *num = global_data;
+	char *num = global.data;
 	int check = 0, i;
 
 	if (num == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
+		free_tokenizer(global.array_st);
+		free_stack(*head);
+		fclose(global.fd_st);
 		exit(EXIT_FAILURE);
 	}
 	for (i = '0'; i <= '9'; i++)
@@ -57,14 +60,13 @@ void func_push(stack_t **head, unsigned int line)
 			check = 1;
 			break;
 		}
-		else
-		{
-			check = 0;
-		}
 	}
 	if (check == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
+		free_tokenizer(global.array_st);
+		free_stack(*head);
+		fclose(global.fd_st);
 		exit(EXIT_FAILURE);
 	}
 	new_node = malloc(sizeof(stack_t));
@@ -74,7 +76,7 @@ void func_push(stack_t **head, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 	new_node->prev = NULL;
-	new_node->n = atoi(global_data);
+	new_node->n = atoi(global.data);
 	new_node->next = *head;
 	if (*head != NULL)
 		(*head)->prev = new_node;
