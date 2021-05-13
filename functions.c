@@ -1,33 +1,73 @@
-#include "header.h"
+#include "monty.h"
+
 /**
-*
-*
+*string_cmp - compare the opcodes if exits.
+*@array: the opcode and its arguments
+*@line: the line readed of the file
+*@head: data structure Doubly linked list
 */
-void string_cmp(char **array, int line, stack_t **head)
+
+void string_cmp(char **array, unsigned int line, stack_t **head)
 {
 	instruction_t cmp_op[] = {
 		{"push", func_push},
-		{"pall" , func_pall},
+		{"pall", func_pall},
 		{NULL, NULL}
 	};
 	int i = 0;
+
 	while (cmp_op[i].opcode != NULL)
 	{
 		if (strcmp(array[0], cmp_op[i].opcode) == 0)
 		{
 			cmp_op[i].f(head, line);
+			return;
 		}
 		i++;
 	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, array[0]);
+	exit(EXIT_FAILURE);
 }
 /**
- * 
- *  
+ *func_push - pushes a value into the stack
+ *@head: the stack
+ *@line: line readed
  */
-void func_push(stack_t **head, int line)
+
+void func_push(stack_t **head, unsigned int line)
 {
 	stack_t *new_node = NULL;
+	char *num = global_data;
+	int check = 0, i;
+
+	if (num == NULL)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
+	for (i = '0'; i <= '9'; i++)
+	{
+		if (num[0] == i)
+		{
+			check = 1;
+			break;
+		}
+		else
+		{
+			check = 0;
+		}
+	}
+	if (check == 0)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line);
+		exit(EXIT_FAILURE);
+	}
 	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 	new_node->prev = NULL;
 	new_node->n = atoi(global_data);
 	new_node->next = *head;
@@ -36,12 +76,15 @@ void func_push(stack_t **head, int line)
 	*head = new_node;
 }
 /**
- * 
- * 
+ *func_pall - print the stack
+ *@head: the stack
+ *@line: line readed
  */
-void func_pall(stack_t **head, int line)
+
+void func_pall(stack_t **head, unsigned int line __attribute__((unused)))
 {
 	stack_t *aux;
+
 	aux = *head;
 	while (aux != NULL)
 	{

@@ -20,10 +20,11 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+int n;
+struct stack_s *prev;
+struct stack_s *next;
 } stack_t;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -34,17 +35,19 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, int line_number);
+char *opcode;
+void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern char *global_data;
-void string_cmp(char **array, int line, stack_t **head);
-void func_push(stack_t **head, int line);
-void func_pall(stack_t **head, int line);
-int main(int ac, char *av[]);
+
+void string_cmp(char **array, unsigned int line, stack_t **head);
+char **tokenizer(char **array, char *buf, char *delimit);
+void func_push(stack_t **head, unsigned int line);
+void func_pall(stack_t **head, unsigned int line);
 void free_stack(stack_t *head);
 void free_tokenizer(char **free_token);
+
 char *global_data;
 
 #endif /*_HEADER_H_*/

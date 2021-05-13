@@ -1,4 +1,5 @@
-#include "header.h"
+#include "monty.h"
+
 /**
 * main - entry point.
 * @ac: arguments counter.
@@ -8,9 +9,9 @@
 
 int main(int ac, char *av[])
 {
-	int i = 0, lines = 1;
+	unsigned int lines = 1;
 	FILE *fd;
-	char buf[1024], **tokens = NULL, *delimit = " \t\n\r\a", *token = NULL;
+	char buf[1024], **tokens = NULL, *delimit = " \t\n\r\a";
 	stack_t *head = NULL;
 	if (ac != 2)
 	{
@@ -25,22 +26,15 @@ int main(int ac, char *av[])
 	}
 	while (fgets(buf, 1024, fd) != NULL)
 	{
-		i = 0;
 		tokens = malloc(sizeof(char *) * strlen(buf));
 		if (tokens == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 		}
-		token = strtok(buf, delimit);
-		while (token)
-		{
-			tokens[i] = strdup(token);
-			i++;
-			token = strtok(NULL, delimit);
-		}
-		tokens[i] = NULL;
-		global_data = tokens[1];
+		tokens = tokenizer(tokens, buf, delimit);
+		if (tokens[0] != NULL)
+			global_data = tokens[1];
 		if (tokens[0] != NULL)
 			string_cmp(tokens, lines, &head);
 		lines++;
@@ -49,4 +43,28 @@ int main(int ac, char *av[])
 	free_stack(head);
 	fclose(fd);
 	return (EXIT_SUCCESS);
+}
+
+/**
+ *tokenizer - tokenize the line of the file
+ *@array: the array where token are going to be stored
+ *@buf: the line to be tokenized
+ *@delimit: the delimit to execute tokenize
+ *Return: the array with the tokens
+ */
+
+char **tokenizer(char **array, char *buf, char *delimit)
+{
+	int i = 0;
+	char *token = NULL;
+
+	token = strtok(buf, delimit);
+		while (token)
+		{
+			array[i] = strdup(token);
+			i++;
+			token = strtok(NULL, delimit);
+		}
+		array[i] = NULL;
+		return (array);
 }
