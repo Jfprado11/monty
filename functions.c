@@ -5,9 +5,10 @@
 *@array: the opcode and its arguments
 *@line: the line readed of the file
 *@head: data structure Doubly linked list
+*@fd: Readed file.
 */
 
-void string_cmp(char **array, unsigned int line, stack_t **head)
+void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 {
 	instruction_t cmp_op[] = {
 		{"push", func_push},
@@ -26,6 +27,10 @@ void string_cmp(char **array, unsigned int line, stack_t **head)
 		i++;
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", line, array[0]);
+	free_tokenizer(array);
+	if (*head != NULL)
+		free_stack(*head);
+	fclose(fd);
 	exit(EXIT_FAILURE);
 }
 /**

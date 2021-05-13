@@ -13,6 +13,7 @@ int main(int ac, char *av[])
 	FILE *fd;
 	char buf[1024], **tokens = NULL, *delimit = " \t\n\r\a";
 	stack_t *head = NULL;
+
 	if (ac != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -36,7 +37,7 @@ int main(int ac, char *av[])
 		if (tokens[0] != NULL)
 			global_data = tokens[1];
 		if (tokens[0] != NULL)
-			string_cmp(tokens, lines, &head);
+			string_cmp(tokens, lines, &head, fd);
 		lines++;
 		free_tokenizer(tokens);
 	}
