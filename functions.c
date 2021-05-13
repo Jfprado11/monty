@@ -3,7 +3,6 @@
 *
 *
 */
-
 void string_cmp(char **array, int line, stack_t **head)
 {
 	instruction_t cmp_op[] = {
@@ -21,7 +20,6 @@ void string_cmp(char **array, int line, stack_t **head)
 		i++;
 	}
 }
-
 /**
  * 
  *  
@@ -49,17 +47,5 @@ void func_pall(stack_t **head, int line)
 	{
 		printf("%d\n", aux->n);
 		aux = aux->next;
-	}
-}
-
-void free_stack(stack_t *head)
-{
-	stack_t *tmp = head;
-
-	while(tmp != NULL)
-	{
-		tmp = tmp->next;
-		free(head);
-		head = tmp;
 	}
 }
