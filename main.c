@@ -28,8 +28,6 @@ int main(int ac, char *av[])
 	}
 	while (fgets(buf, 1024, fd) != NULL)
 	{
-		if (buf[0] == 10)
-			continue;
 		tokens = malloc(sizeof(char *) * strlen(buf));
 		if (tokens == NULL)
 		{
