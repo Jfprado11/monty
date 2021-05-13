@@ -55,7 +55,7 @@ void func_push(stack_t **head, unsigned int line)
 	}
 	for (i = '0'; i <= '9'; i++)
 	{
-		if (num[0] == i)
+		if (num[0] == i || (num[0] == '-' && num[1] == i))
 		{
 			check = 1;
 			break;
