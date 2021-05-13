@@ -16,7 +16,7 @@ void func_swap(stack_t **head, unsigned int line)
 	}
 	if (i < 2)
 	{
-		fprintf(stderr, "L%d can't swap, stack too short\n", line);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line);
 		free_tokenizer(global.array_st);
 		free_stack(*head);
 		fclose(global.fd_st);
