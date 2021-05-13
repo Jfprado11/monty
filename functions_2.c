@@ -81,3 +81,27 @@ void func_nop(stack_t **head __attribute__((unused)), unsigned int line)
 
 	i = i + line;
 }
+/**
+ *check_idigit - cheks the arguments of push is an string
+ *@num: the string to be confirmed
+ *Return: 0 is not int, 1 is an integer
+ */
+int check_idigit(char *num)
+{
+
+	int i, check = 0;
+
+	if ((num[0] >= '0' && num[0] <= '9') || num[0] == '-')
+	{
+		check = 1;
+	}
+	for (i = 1; num[i] != '\0'; i++)
+	{
+		if (isdigit(num[i]) == 0)
+		{
+			check = 0;
+			break;
+		}
+	}
+	return (check);
+}

@@ -48,7 +48,7 @@ void func_push(stack_t **head, unsigned int line)
 {
 	stack_t *new_node = NULL;
 	char *num = global.data;
-	int check = 0, i;
+	int check = 0;
 
 	if (num == NULL)
 	{
@@ -58,14 +58,8 @@ void func_push(stack_t **head, unsigned int line)
 		fclose(global.fd_st);
 		exit(EXIT_FAILURE);
 	}
-	for (i = '0'; i <= '9'; i++)
-	{
-		if (num[0] == i || (num[0] == '-' && num[1] == i))
-		{
-			check = 1;
-			break;
-		}
-	}
+	if ((num[0] >= '0' && num[0] <= '9') || num[0] == '-')
+	check = check_idigit(num);
 	if (check == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
