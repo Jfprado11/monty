@@ -62,6 +62,8 @@ void free_tokenizer(char **free_token);
 void func_pint(stack_t **head, unsigned int line);
 void func_pop(stack_t **head, unsigned int line);
 void func_swap(stack_t **head, unsigned int line);
+void func_add(stack_t **head, unsigned int line);
+void func_nop(stack_t **head __attribute__((unused)), unsigned int line);
 global_struct global;
 
 #endif /*_HEADER_H_*/
