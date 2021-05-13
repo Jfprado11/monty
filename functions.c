@@ -39,14 +39,14 @@ void func_push(stack_t **head, unsigned int line)
 {
 	stack_t *new_node = NULL;
 	char *num = global_data;
-	int check = 0;
+	int check = 0, i;
 
 	if (num == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
-	for (int i = '0'; i <= '9'; i++)
+	for (i = '0'; i <= '9'; i++)
 	{
 		if (num[0] == i)
 		{
