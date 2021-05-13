@@ -42,6 +42,7 @@ void (*f)(stack_t **stack, unsigned int line_number);
 extern char *global_data;
 
 void string_cmp(char **array, unsigned int line, stack_t **head);
+char **tokenizer(char **array, char *buf, char *delimit);
 void func_push(stack_t **head, unsigned int line);
 void func_pall(stack_t **head, unsigned int line);
 void free_stack(stack_t *head);
