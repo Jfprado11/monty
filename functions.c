@@ -13,6 +13,7 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 	instruction_t cmp_op[] = {
 		{"push", func_push},
 		{"pall", func_pall},
+		{"pint", func_pint},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -90,12 +91,32 @@ void func_push(stack_t **head, unsigned int line)
 
 void func_pall(stack_t **head, unsigned int line __attribute__((unused)))
 {
-	stack_t *aux;
+	stack_t *aux = NULL;
 
+	if (*head == NULL)
+		return;
 	aux = *head;
 	while (aux != NULL)
 	{
 		printf("%d\n", aux->n);
 		aux = aux->next;
 	}
+}
+
+/**
+ *func_pint - print the top of the stack
+ *@head: the stack
+ *@line: line readed
+ */
+void func_pint(stack_t **head, unsigned int line)
+{
+
+	if (*head == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
+		free_tokenizer(global.array_st);
+		fclose(global.fd_st);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*head)->n);
 }
