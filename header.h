@@ -43,5 +43,8 @@ void string_cmp(char **array, int line, stack_t **head);
 void func_push(stack_t **head, int line);
 void func_pall(stack_t **head, int line);
 int main(int ac, char *av[]);
+void free_stack(stack_t *head);
+void free_tokenizer(char **free_token);
+char *global_data;
 
 #endif /*_HEADER_H_*/
