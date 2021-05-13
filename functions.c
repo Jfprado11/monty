@@ -15,6 +15,7 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 		{"pall", func_pall},
 		{"pint", func_pint},
 		{"pop", func_pop},
+		{"swap", func_swap},
 		{NULL, NULL}
 	};
 	int i = 0;
