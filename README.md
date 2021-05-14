@@ -33,7 +33,7 @@ $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty <filebytecodes.m>
 
 ## Tests cases
 1)
-command: cat -e bytecodes/000.m
+command: cat -e bytecodes/000.m \n
 push 0$
 push 1$
 push 2$
