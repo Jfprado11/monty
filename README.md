@@ -27,8 +27,10 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - All your header files should be include guarded
 - You are expected to do the tasks in the order shown in the project
 
-## Compilation & Output
-$ gcc -Wall -Werror -Wextra -pedantic *.c -o monty <filebytecodes.m>
+## Compilation
+gcc -Wall -Werror -Wextra -pedantic *.c -o monty
+## Output
+./monty <filebytecodes.m>
 
 ## Tasks
 0. push, pall
