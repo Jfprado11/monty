@@ -68,6 +68,8 @@ void func_sub(stack_t **head, unsigned int line);
 void func_nop(stack_t **head __attribute__((unused)), unsigned int line);
 int check_idigit(char *num);
 void func_div(stack_t **head, unsigned int line);
+void func_mul(stack_t **head, unsigned int line);
+void func_mod(stack_t **head, unsigned int line);
 global_struct global;
 
 #endif /*_HEADER_H_*/

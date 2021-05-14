@@ -20,6 +20,8 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 		{"nop", func_nop},
 		{"sub", func_sub},
 		{"div", func_div},
+		{"mul", func_mul},
+		{"mod", func_mod},
 		{NULL, NULL}
 	};
 	int i = 0;
