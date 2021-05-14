@@ -26,6 +26,8 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 	};
 	int i = 0;
 
+	if (array[0][0] == '#')
+		return;
 	while (cmp_op[i].opcode != NULL)
 	{
 		if (strcmp(array[0], cmp_op[i].opcode) == 0)
