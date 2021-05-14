@@ -18,6 +18,7 @@ void string_cmp(char **array, unsigned int line, stack_t **head, FILE *fd)
 		{"swap", func_swap},
 		{"add", func_add},
 		{"nop", func_nop},
+		{"sub", func_sub},
 		{NULL, NULL}
 	};
 	int i = 0;
@@ -58,7 +59,6 @@ void func_push(stack_t **head, unsigned int line)
 		fclose(global.fd_st);
 		exit(EXIT_FAILURE);
 	}
-	if ((num[0] >= '0' && num[0] <= '9') || num[0] == '-')
 	check = check_idigit(num);
 	if (check == 0)
 	{

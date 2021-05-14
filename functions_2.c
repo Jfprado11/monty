@@ -105,3 +105,37 @@ int check_idigit(char *num)
 	}
 	return (check);
 }
+/**
+ *func_sub - subtract the top element from the second top
+ *@head: the linked list
+ *@line: the line of the number
+ */
+void func_sub(stack_t **head, unsigned int line)
+{
+	stack_t *aux = *head;
+	int sum = 0, i = 0;
+
+	while (aux != NULL)
+	{
+		aux = aux->next;
+		i++;
+	}
+	if (i < 2)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line);
+		free_tokenizer(global.array_st);
+		free_stack(*head);
+		fclose(global.fd_st);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		aux = *head;
+		aux = aux->next;
+		sum = aux->n - (*head)->n;
+		aux->n = sum;
+		free(*head);
+		aux->prev = NULL;
+		*head = aux;
+	}
+}

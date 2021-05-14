@@ -64,6 +64,7 @@ void func_pint(stack_t **head, unsigned int line);
 void func_pop(stack_t **head, unsigned int line);
 void func_swap(stack_t **head, unsigned int line);
 void func_add(stack_t **head, unsigned int line);
+void func_sub(stack_t **head, unsigned int line);
 void func_nop(stack_t **head __attribute__((unused)), unsigned int line);
 int check_idigit(char *num);
 global_struct global;
