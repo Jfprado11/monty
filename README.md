@@ -28,38 +28,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - You are expected to do the tasks in the order shown in the project
 
 ## Compilation & Output
-Your code will be compiled this way:
 $ gcc -Wall -Werror -Wextra -pedantic *.c -o monty <filebytecodes.m>
-
-## Tests cases
-1)
-command: cat -e bytecodes/000.m \n
-push 0$
-push 1$
-push 2$
-  push 3$
-                   pall    $
-push 4$
-    push 5    $
-      push    6        $
-pall$
-
-2)
-push 0 Push 0 onto the stack$
-push 1 Push 1 onto the stack$
-$
-push 2$
-  push 3$
-                   pall    $
-$
-$
-                           $
-push 4$
-$
-    push 5    $
-      push    6        $
-$
-pall This is the end of our program. Monty is awesome!$
 
 ## Tasks
 0. push, pall
